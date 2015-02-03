@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sha1App">
+ <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha512.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/controllers.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+  <link href="css/animate.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+   $( document ).ready(function() {
+     $("#dialog").dialog({
+       autoOpen: false,
+       modal: true,
+       title: "Your QR Code",
+       });
+     $( "#btn" ).click(function() {
+       $("#dialog").dialog('open');
+       return false;
+    });
+   });
+  </script>
+ </head>
+ <body>
+  <form name="myForm" ng-controller="Sha1AppCtrl">
+    <div class="container">
+     <div class="row" id="row1">
+      <div class="col-sm-12">
+       <h1 class="animated zoomIn">Hash and QR Code Generator Using AngularJS</h1>
+       <h2 class="animated fadeInLeft">by John P. Reeves</h2>
+      </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <br />
+     <div class="row" id="row2">
+      <div class="col-sm-12 form-group">
+       <span class="fa fa-pencil fa-2x">&nbsp</span>
+       <h3>Message</h3>
+       <input type="text" class="form-control" ng-model="message" ng-trim="false" ng-change="change()" id="message" placeholder="Enter message">
+       <button type="submit" class="btn btn-success" id="btn" ng-hide="!message">
+        <span class="fa fa-qrcode fa-2x"></span> Get QR Code
+       </button>
+    </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <div class="row" id="row3" ng-hide="!message">
+      <div class="col-sm-12 form-group">
+       <span class="fa fa-cogs fa-2x">&nbsp</span>
+       <h3>SHA1 Hash</h3>
+       <input type="text" ng-model="sha1" class="form-control" id="sha1" placeholder="SHA1" readonly>
+    </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <div class="row" id="row4" ng-hide="!message">
+      <div class="col-sm-12 form-group">
+       <span class="fa fa-cogs fa-2x">&nbsp</span>
+       <h3>SHA256 Hash</h3>
+       <input type="text" ng-model="sha256" class="form-control" id="sha256" placeholder="SHA256" readonly>
+    </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <div class="row" id="row5" ng-hide="!message">
+      <div class="col-sm-12 form-group">
+       <span class="fa fa-cogs fa-2x">&nbsp</span>
+       <h3>SHA512 Hash</h3>
+       <input type="text" ng-model="sha512" class="form-control" id="sha512" placeholder="SHA512" readonly>
+    </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <div class="row" id="row6" ng-hide="!message">
+      <div class="col-sm-12 form-group">
+       <span class="fa fa-cogs fa-2x">&nbsp</span>
+       <h3>MD5 Hash</h3>
+       <input type="text" ng-model="md5" class="form-control" id="md5" placeholder="MD5" readonly>
+      </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+     <hr />
+     <div class="row" id="row7">
+      <div class="col-sm-12">
+       <h3>Used in this project</h3>
+       <ul class="animated fadeInDown">
+        <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+        <li><a href="https://angularjs.org/">AngularJS</a></li>
+        <li><a href="http://davidshimjs.github.io/qrcodejs/">qrcode.js</a></li>
+        <li><a href="https://code.google.com/p/crypto-js/">crypto-js</a></li>
+        <li><a href="http://jquery.com/">jQuery</a></li>
+        <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+        <li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
+        <li><a href="http://daneden.github.io/animate.css/">animate.css</a></li>
+        <li><a href="https://www.google.com/fonts">Google Fonts</a></li>
+       </ul>
+       <h6 class="text-center">&copy 2015 <strong>John P. Reeves</strong> All Rights Reserved</h6>
+      </div><!-- .col-sm-12 -->
+     </div><!-- .row -->
+    </div><!-- .container -->
+  </form>
+  <div id="dialog">
+   <span id="qrcode"></span>
+  </div><!-- dialog -->
+ </body>
+</html>

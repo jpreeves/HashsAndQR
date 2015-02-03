@@ -1,0 +1,17 @@
+html,body{
+  background-image:url('../images/retina_wood.png');
+}
+
+#row1 h1, #row1 h2{
+ font-family: 'Fredoka One', cursive;
+ text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+#row2 h3, #row3 h3, #row4 h3, #row5 h3, #row6 h3{
+  font-family: 'Fredoka One', cursive;
+  display:inline;
+}
+
+#row7 h3{
+  font-family: 'Fredoka One', cursive;
+}
